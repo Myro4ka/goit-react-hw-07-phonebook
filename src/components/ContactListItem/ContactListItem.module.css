@@ -1,3 +1,6 @@
+.list_item {
+  text-transform: capitalize;
+}
 button {
   padding: 5px 10px;
   margin-top: 5px;

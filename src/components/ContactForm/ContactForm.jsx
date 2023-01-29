@@ -6,7 +6,8 @@ import css from '../ContactForm/ContactForm.module.css';
 export class ContactForm extends Component {
   state = { name: '', number: '' };
 
-  handleCreateNewContact = () => {
+  handleCreateNewContact = e => {
+    e.preventDefault();
     const newContact = {
       name: this.state.name,
       number: this.state.number,
@@ -26,7 +27,7 @@ export class ContactForm extends Component {
   render() {
     console.log(this.props);
     return (
-      <div className={css.form}>
+      <form className={css.form} onSubmit={this.handleCreateNewContact}>
         <p className={css.title}>Name</p>
         <input
           type="text"
@@ -47,8 +48,8 @@ export class ContactForm extends Component {
           value={this.state.number}
           required
         />
-        <button onClick={this.handleCreateNewContact}>Add contact</button>
-      </div>
+        <button>Add contact</button>
+      </form>
     );
   }
 }

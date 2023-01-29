@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import '../ContactListItem/ContactListItem.module.css';
+import css from '../ContactListItem/ContactListItem.module.css';
 
 export const ContactListItem = ({ name, number, handleDelete }) => {
   return (
-    <li>
+    <li className={css.list_item}>
       {name}: {number}
       <button type="button" onClick={() => handleDelete(name)}>
         Delete

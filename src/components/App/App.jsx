@@ -1,5 +1,4 @@
 import { Component } from 'react';
-// import { nanoid } from 'nanoid';
 import { Section } from 'components/Section/Section';
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList';
@@ -14,12 +13,16 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    // name: '',
-    // number: '',
   };
 
   addToContacts = newContact => {
-    if (this.state.contacts.find(contact => contact.name === newContact.name)) {
+    if (
+      this.state.contacts.find(
+        contact =>
+          contact.name.toLocaleLowerCase() ===
+          newContact.name.toLocaleLowerCase()
+      )
+    ) {
       return alert(`${newContact.name} is already in contacts`);
     }
     this.setState(prev => ({
