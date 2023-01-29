@@ -25,7 +25,6 @@ export class ContactForm extends Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <form className={css.form} onSubmit={this.handleCreateNewContact}>
         <p className={css.title}>Name</p>
