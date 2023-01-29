@@ -1,0 +1,18 @@
+button {
+  padding: 5px 10px;
+  margin-top: 5px;
+  margin-left: 5px;
+
+  background-color: #b6baff;
+  color: #222327;
+  font-weight: 700;
+  border-radius: 5px;
+  border: 1px solid #b6baff;
+  cursor: pointer;
+}
+
+button:hover,
+button:focus {
+  background-color: transparent;
+  color: inherit;
+}
