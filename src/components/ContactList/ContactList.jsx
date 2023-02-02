@@ -11,6 +11,7 @@ export const ContactList = ({ applyFilterContacts, deleteContact }) => {
             key={id}
             name={name}
             number={number}
+            id={id}
             handleDelete={deleteContact}
           />
         );
