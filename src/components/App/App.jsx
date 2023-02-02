@@ -10,11 +10,29 @@ const defaultContactState = [
   { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
   { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
 ];
+
 export class App extends Component {
   state = {
     contacts: defaultContactState,
     filter: '',
   };
+
+  componentDidMount() {
+    const localStorageData = JSON.parse(localStorage.getItem('contacts'));
+    if (localStorageData) {
+      this.setState({ contacts: localStorageData });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      return localStorage.setItem(
+        'contacts',
+        JSON.stringify(this.state.contacts)
+      );
+    }
+    this.setState({ contacts: this.state.contacts });
+  }
 
   addToContacts = newContact => {
     const isContactExist = this.state.contacts.find(
