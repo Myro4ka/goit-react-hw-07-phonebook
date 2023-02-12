@@ -19,5 +19,4 @@ export const ContactListItem = ({ name, number, id }) => {
 ContactListItem.propTypes = {
   name: PropTypes.string.isRequired,
   number: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-  handleDelete: PropTypes.func.isRequired,
 };
