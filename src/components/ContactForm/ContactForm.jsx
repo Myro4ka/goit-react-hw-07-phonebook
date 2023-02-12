@@ -1,9 +1,14 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
-import PropTypes from 'prop-types';
 import css from '../ContactForm/ContactForm.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { contactsCheking } from 'utils/contactsCheking';
+import { addContact } from 'redux/contactsSlice';
+import { getContacts } from 'redux/selectors';
 
-export const ContactForm = ({ addToContacts }) => {
+export const ContactForm = () => {
+  const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -14,7 +19,13 @@ export const ContactForm = ({ addToContacts }) => {
       number,
       id: nanoid(),
     };
-    addToContacts(newContact);
+    const inContactList = contacts.filter(contact =>
+      contactsCheking(contact, newContact)
+    ).length;
+
+    if (!inContactList) {
+      dispatch(addContact(newContact));
+    }
     setName('');
     setNumber('');
   };
@@ -52,8 +63,4 @@ export const ContactForm = ({ addToContacts }) => {
       <button>Add contact</button>
     </form>
   );
-};
-
-ContactForm.propTypes = {
-  addToContacts: PropTypes.func.isRequired,
 };
