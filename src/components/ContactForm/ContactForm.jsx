@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 import { contactsCheking } from 'utils/contactsCheking';
-import { addContact } from 'redux/contactsSlice';
+import { addContactThunk } from 'redux/contactsOperations';
 import { getContacts } from 'redux/selectors';
 import css from '../ContactForm/ContactForm.module.css';
 
@@ -24,7 +24,7 @@ export const ContactForm = () => {
     ).length;
 
     if (!inContactList) {
-      dispatch(addContact(newContact));
+      dispatch(addContactThunk(newContact));
     }
     setName('');
     setNumber('');
